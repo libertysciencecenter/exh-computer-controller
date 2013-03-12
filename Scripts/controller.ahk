@@ -75,6 +75,17 @@ Loop
 		}
 	}
 
+	if ( InStr(data,"CMD:") )
+	{
+		if (setCacheData(ComputerID,"READY", CG) = "1")
+		{
+			if ( InStr(data,"CMD:RESTART") )
+				MsgBox, RESTART
+			else if ( InStr(data,"CMD:SHUTDOWN") )
+				MsgBox, SHUTDOWNNOW
+		}
+	}
+
 	Sleep, 3000
 }
 
