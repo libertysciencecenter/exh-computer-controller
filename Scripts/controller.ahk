@@ -37,6 +37,16 @@ setCacheData(key, value, group)
 	return Contents
 }
 
+deleteCacheKey(key, group)
+{
+	Random, rand, 0.0, 10000.0
+	url = http://api.lsc.local/v1/cache/delete/?key=%key%&group=%group%&fake%rand%=%rand%
+	UrlDownloadToFile, %url%, setCacheResult.txt
+	FileRead, Contents, setCacheResult.txt
+	FileDelete, setCacheResult.txt
+	return Contents
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;
 ; Instatiate UI
 ;;;;;;;;;;;;;;;;;;;;;;;
@@ -80,9 +90,9 @@ Loop
 		if (setCacheData(ComputerID,"READY", CG) = "1")
 		{
 			if ( InStr(data,"CMD:RESTART") )
-				MsgBox, RESTART
+				Shutdown, 6
 			else if ( InStr(data,"CMD:SHUTDOWN") )
-				MsgBox, SHUTDOWNNOW
+				Shutdown, 5
 		}
 	}
 
@@ -100,6 +110,7 @@ return
 ButtonOK:
 Gui, Submit  ; Save the input from the user to each control's associated variable.
 RegWrite, REG_SZ, HKEY_LOCAL_MACHINE, SOFTWARE\EXHCOMMANDCENTER, ComputerName, %ID%
+deleteCacheKey(ComputerID,CG)
 ComputerID = %ID%
 setCacheData(ComputerID,"READY", CG)
 return
