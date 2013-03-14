@@ -52,6 +52,7 @@ deleteCacheKey(key, group)
 ;;;;;;;;;;;;;;;;;;;;;;;
 
 Menu, Tray, Click, 1
+Menu, tray, add, Documentation, DocsHandler 
 Menu, tray, add  ; Creates a separator line.
 Menu, tray, add, Set computer name, MenuHandler 
 Menu, Tray, Default,Set computer name
@@ -105,6 +106,10 @@ Loop
 
 MenuHandler:
 Gui, Show,W300, Set Computer ID
+return
+
+DocsHandler:
+Msgbox, See http://trac.lsc.org/wiki/Exhibits for docs.
 return
 
 ButtonOK:
