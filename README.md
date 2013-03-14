@@ -9,10 +9,23 @@ This is application uses the LSC API cache endpoint to remotely control computer
 3. The web interface posts the command to the corresponding enpoint key (the computer ID)
 4. Every 60 seconds the client checks that endpoint and if a new command is present excutes that command
 
+
+Commands
+======================
 The commands that are posted are as follow
 
 * `CMD:SHUTDOWN` - shutdowns the computer.
 * `CMD:RESTART` - restarts the computer
 * `EVAL:%COMMANDS%` - excutes the %COMMANDS% (for instance if on a windows machine. Newline is represented by |newline|. An example would be `EVAL:MOUSEMOVE,400,400|newline|Msgbox,done`)
 
+
+Clients
+======================
+Each operating systems has a different client software
+
+Windows - Windows uses autohotkey for client. If you wish to compile the AHK to exe you have to download the compiler. 
+
+
+Installation
+======================
 For more information see trac: http://trac.lsc.org/wiki/Tech/Exhibits/computercontroller
