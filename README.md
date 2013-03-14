@@ -5,7 +5,7 @@ This is application uses the LSC API cache endpoint to remotely control computer
 
 1. A user installs the client on the machine
 2. On client startup the machine creates a key (the key is the computer id) in the EXHCOMPUTERCOMMAND group
-2. A user clicks a "shutdown down" button.
+2. A user clicks a "shutdown down" button on the web interface.
 3. The web interface posts the command to the corresponding enpoint key (the computer ID)
 4. Every 60 seconds the client checks that endpoint and if a new command is present excutes that command
 
